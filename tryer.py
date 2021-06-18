@@ -1,23 +1,37 @@
-from math import *
-import random
 from tkinter import *
+
+import random
 from tkinter import messagebox
-
-game_numbers = random.sample(range(1,49),6)
-
-user_numbers = []
-
-x = int(input("Please enter 6 numbers"))
-
-y = str(x)
-
-for i in range(0,len(y)):
-    user_numbers.append(int(y[i]))
-
+empty1 = [1,2,3,4,5,6]
+empty2 = []
+empty3 = []
 compare = []
-for i in game_numbers:
-    if i in user_numbers:
-        compare.append(i)
-print(compare)
 
+game_numbers = random.sample(range(0,49),6)
 
+for i in range(0,18):
+    if len(empty1) <= 6:
+        for i in game_numbers:
+            if i in empty1:
+                compare.append(i)
+            else:
+                pass
+
+    elif len(empty2) <= 6:
+
+        for i in game_numbers:
+            if i in empty2:
+                    compare.append(i)
+            else:
+                pass
+
+    elif len(empty3) <= 6:
+
+        for i in game_numbers:
+            if i in empty3:
+                compare.append(i)
+            else:
+                messagebox.showwarning(title=None, message="You have excluded your playing times")
+if len(empty1) < 7:
+
+        print(len(empty1))
