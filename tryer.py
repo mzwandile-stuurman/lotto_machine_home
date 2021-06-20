@@ -1,37 +1,19 @@
 from tkinter import *
+from lotto import Lotto_machine
+
+x = Lotto_machine.play()
+print(x)
+
+
 
 import random
 from tkinter import messagebox
 empty1 = [1,2,3,4,5,6]
-empty2 = []
-empty3 = []
+empty2 = [1,2,3,4,5,6]
+empty3 = [1,2,3,4,5,6]
 compare = []
+dict = {0:0, 1:0,3:20,4:100.5,5:2384,6:8584,7:10000000}
 
-game_numbers = random.sample(range(0,49),6)
-
-for i in range(0,18):
-    if len(empty1) <= 6:
-        for i in game_numbers:
-            if i in empty1:
-                compare.append(i)
-            else:
-                pass
-
-    elif len(empty2) <= 6:
-
-        for i in game_numbers:
-            if i in empty2:
-                    compare.append(i)
-            else:
-                pass
-
-    elif len(empty3) <= 6:
-
-        for i in game_numbers:
-            if i in empty3:
-                compare.append(i)
-            else:
-                messagebox.showwarning(title=None, message="You have excluded your playing times")
-if len(empty1) < 7:
-
-        print(len(empty1))
+for i in dict:
+    if i == len(empty1):
+        print(dict[i])

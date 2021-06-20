@@ -9,7 +9,8 @@ root.config(bg="dark slate grey")
 class Login():
 
     def __init__(self,master):
-        #Name and Surname labels and entries
+
+        # Name and Surname labels and entries
         self.name_label = Label(master, text="Enter your name")
         self.name_label.place(x=10,y=10)
         self.surname_label = Label(master, text="Enter Surname")
@@ -24,8 +25,6 @@ class Login():
         self.email_entry = Entry(master)
         self.email_entry.place(x=150,y=100)
 
-
-
         self.id_entry = Entry(master)
         self.id_entry.config(state='readonly')
         self.id_entry.place(x=200,y=150)
@@ -36,13 +35,10 @@ class Login():
         self.login_btn = Button(root, text ="login", command=self.id_check)
         self.login_btn.place(x=10, y=250)
 
-
-
     def details(self):
         name = self.name_entry.get()
         surname = self.surname_entry.get()
         email = str(self.email_entry.get())
-
 
         if "@" in self.email_entry.get():
             self.id_entry.config(state='normal')
@@ -51,6 +47,12 @@ class Login():
             messagebox.showinfo(title='Alert!', message="Please enter valid email adress!")
             self.id_entry.config(state='readonly')
             self.email_entry.delete(0,END)
+        f = open("details.txt","a")
+        f.writelines("User name: "+ " " + self.name_entry.get()  )
+        f.writelines("User Surname: " + " " + self.surname_entry.get())
+        f.writelines("User email: " + " " + self.email_entry.get())
+        f.close()
+
 
     def id_check(self):
         try:
@@ -59,6 +61,9 @@ class Login():
 
             year = self.id_entry.get()[1]
             year2 = self.id_entry.get()[0:2]
+            f = open("details.txt", "a")
+            f.writelines("User Id: " + " " + self.id_entry.get())
+            f.close()
 
             if type(Id) == type(str()) or len(id_ls) != 13:
                 raise ValueError
@@ -72,13 +77,17 @@ class Login():
                 import lotto
                 root.destroy()
             else:
-                #x = int(year) -3
                 messagebox.showinfo(title="Under Age", message="Your are too young to play")
+
         except ValueError:
 
             messagebox.showerror(title="Invalid Id", message="Please enter valid ID")
             self.id_entry.delete(0,END)
 
+class Get(Login):
+    def name1 (self):
+        name = self.name_entry.get()
+        return name
 
 
 x=Login(root)

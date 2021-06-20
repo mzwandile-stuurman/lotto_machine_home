@@ -1,6 +1,8 @@
+import requests
 from tkinter import *
 from tkinter import messagebox
-import requests
+from login import Get
+
 
 
 
@@ -46,7 +48,8 @@ convert_list.place(x=100, y=70)
 
 
 def converting():
-    num = float(my_entry1.get()) # get this from lotto winnings
+    x = Get.name1()
+    num = float(my_entry1.insert(0,x)) # get this from lotto winnings
     print(information_json['conversion_rates'][convert_list.get(ACTIVE)])
     ans = num * information_json['conversion_rates'][convert_list.get(ACTIVE)]
     my_label3['text'] = ans

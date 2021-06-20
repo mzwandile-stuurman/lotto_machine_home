@@ -150,9 +150,8 @@ class Lotto_machine():
             self.btn_48=Button(slave,text="48",width=3, command=self.fourty_8)
             self.btn_48.place(x=180,y=355)
 
-            self.btn_49=Button(slave,text="49",width=3, command=self.fourty_9)
+            self.btn_49 = Button(slave,text="49",width=3, command=self.fourty_9)
             self.btn_49.place(x=215,y=355)
-
 
             # all the empty lists where results will be stored.
             self.empty1 =[]
@@ -160,15 +159,28 @@ class Lotto_machine():
             self.empty3 = []
             self.compare = []
 
+            # Winnings Dictionary
+            self.dict = {0:0, 1:0,2:20,3:100.5,4:2384,5:8584,6:10000000}
 
+            # Winnings block
+
+            self.winnings_heading = Label(slave, text="Your winnings", bg="white", width = 24)
+            self.winnings_heading.place(x=680, y=110)
 
             # first set of entries
-
 
             self.num_label1 =Label(slave, text="Numbers")
             self.num_label1.place(x=360, y=150)
             self.num_entry1=Entry(slave, width=28)
             self.num_entry1.place(x=420,y=150)
+            self.match_label = Label(slave,text="Matching numbers")
+            self.match_label.place(x=700, y=145)
+            self.match_entry1 = Entry(slave)
+            self.match_entry1.place(x=700, y=165)
+            self.wins_label = Label(slave, text="You won")
+            self.wins_label.place(x=700,y=200)
+            self.wins_entry1 = Entry(slave)
+            self.wins_entry1.place(x=700, y=220)
 
             self.draw_label1 = Label(slave, text="Draw")
             self.draw_label1.place(x=360,y=185)
@@ -176,11 +188,20 @@ class Lotto_machine():
             self.draw_entry1.place(x=420,y=185)
 
             self.results_label1 = Label(slave, text="Results", )
-            self.results_label1.place(x=360,y=250)
+            self.results_label1.place(x=360,y=220)
             self.results_entry1=Entry(slave, width=28)
-            self.results_entry1.place(x=420,y=250)
+            self.results_entry1.place(x=420,y=220)
 
             # Second set
+
+            self.match_label2 = Label(slave, text="Matching numbers")
+            self.match_label2.place(x=700, y=290)
+            self.match_entry2 = Entry(slave)
+            self.match_entry2.place(x=700, y=310)
+            self.wins_label2 = Label(slave, text="You won")
+            self.wins_label2.place(x=700, y=350)
+            self.wins_entry2 = Entry(slave)
+            self.wins_entry2.place(x=700, y=370)
 
             self.num_label2=Label(slave, text="Numbers")
             self.num_label2.place(x=360, y=300)
@@ -188,38 +209,49 @@ class Lotto_machine():
             self.num_entry2.place(x=420,y=300)
 
             self.draw_label2 = Label(slave, text="Draw")
-            self.draw_label2.place(x=360,y=350)
+            self.draw_label2.place(x=360,y=330)
             self.draw_entry2=Entry(slave,width=28)
-            self.draw_entry2.place(x=420,y=350)
+            self.draw_entry2.place(x=420,y=330)
 
             self.results_label2 = Label(slave, text="Results", )
-            self.results_label2.place(x=360,y=400)
+            self.results_label2.place(x=360,y=360)
             self.results_entry2 = Entry(slave, width=28)
-            self.results_entry2.place(x=420,y=400)
+            self.results_entry2.place(x=420,y=360)
 
             # Third set
 
+            self.match_label3 = Label(slave, text="Matching numbers")
+            self.match_label3.place(x=700, y=430)
+            self.match_entry3 = Entry(slave)
+            self.match_entry3.place(x=700, y=450)
+            self.wins_label3 = Label(slave, text="You won")
+            self.wins_label3.place(x=700, y=480)
+            self.wins_entry3 = Entry(slave)
+            self.wins_entry3.place(x=700, y=500)
+
             self.num_label3 =Label(slave, text="Numbers")
-            self.num_label3.place(x=360, y=450)
+            self.num_label3.place(x=360, y=430)
             self.num_entry3=Entry(slave, width=28)
-            self.num_entry3.place(x=420,y=450)
-            #self.num_entry3.config(state='readonly')
+            self.num_entry3.place(x=420,y=430)
+            # self.num_entry3.config(state='readonly')
 
             self.draw_label3 = Label(slave, text="Draw")
-            self.draw_label3.place(x=360,y=500)
+            self.draw_label3.place(x=360,y=460)
             self.draw_entry3=Entry(slave,width=28)
-            self.draw_entry3.place(x=420,y=500)
+            self.draw_entry3.place(x=420,y=460)
 
             self.results_label3 = Label(slave, text="Results", )
-            self.results_label3.place(x=360,y=550)
+            self.results_label3.place(x=360,y=495)
             self.results_entry3=Entry(slave, width=28)
-            self.results_entry3.place(x=420,y=550)
+            self.results_entry3.place(x=420,y=495)
 
+            # Totals entry
+            self.total_label = Label(slave, text = "Total winnings:", bg="white")
+            self.total_label.place(x=400, y=600)
+            self.total_entry = Entry(slave)
+            self.total_entry.place(x=500,y=600)
 
-
-
-            #play buttons
-
+            # play button
             self.play_btn = Button(slave,text="Play",command=self.play)
             self.play_btn.place(x=50,y=400)
 
@@ -229,8 +261,7 @@ class Lotto_machine():
 
             # claim button
             self.claim_btn = Button(slave, text="Claim", command = self.claim)
-            self.claim_btn.place(x=200,y=450)
-
+            self.claim_btn.place(x=150,y=450)
 
             # Sample creates a sample without replacement
             self.game_numbers = random.sample(range(1, 49), 6) # creating 6 random numbers
@@ -240,14 +271,15 @@ class Lotto_machine():
             from tkinter import messagebox
 
             if len(self.empty1) < 6:
-                    self.empty1.append(1)
-                    self.num_entry1.insert(END,"1 ")
-                    self.btn_1.config(state='disable')
+                self.empty1.append(1)
+                self.num_entry1.insert(END,"1 ")
+                self.btn_1.config(state='disable')
 
             elif  len(self.empty1) ==6 and len(self.empty2) < 6 :
-                    self.empty2.append(1)
-                    self.num_entry2.insert(END,"1 ")
-                    self.btn_1.config(state='disable')
+
+                self.empty2.append(1)
+                self.num_entry2.insert(END,"1 ")
+                self.btn_1.config(state='disable')
 
             elif len(self.empty2) == 6 and len(self.empty3) < 6:
                 self.empty3.append(1)
@@ -647,7 +679,7 @@ class Lotto_machine():
 
             elif  len(self.empty1) ==6 and len(self.empty2) < 6 :
                     self.empty2.append(21)
-                    self.num_entry2.insert(END<'21 ')
+                    self.num_entry2.insert(END,'21 ')
                     self.btn_21.config(state='disable')
 
             elif len(self.empty2) == 6 and len(self.empty3) < 6:
@@ -1176,51 +1208,82 @@ class Lotto_machine():
 
 
         #play function
-
         def play(self):
 
-            if len(self.empty1) == 6:
+            if len(self.empty1) == 6 and len(self.empty1) !=0:
                 for i in self.game_numbers:
                     if i in self.empty1:
                         self.compare.append(i)
+                for i in self.dict:
+                    if i == len(self.compare):
+                        self.wins_entry1.insert(0,self.dict[i])
 
-            elif len(self.empty2) == 6:
-                for i in self.game_numbers:
-                    if i in self.empty2:
-                        self.compare.append(i)
-
-            else:
-                if len(self.empty3) == 6:
-                    for i in self.game_numbers:
-                        if i in self.empty3:
-                            self.compare.append(i)
-
-            if len(self.empty1) != 0:
-
-                #self.num_entry1.insert(0,self.empty1)
-                self.results_entry1.insert(0,self.compare)
-                self.draw_entry1.insert(0,self.game_numbers)
+                self.results_entry1.insert(0, self.compare)
+                self.draw_entry1.insert(0, self.game_numbers)
+                self.match_entry1.insert(0,len(self.compare))
                 self.num_entry1.config(state='readonly')
                 self.results_entry1.config(state='readonly')
                 self.draw_entry1.config(state='readonly')
+                f = open("details.txt", "a")
+                f.write(("Numbers you played for set1: " + self.num_entry1.get()))
+                f.write("Lotto numbers for set1: " + self.draw_entry1.get())
+                f.write(" Winning numbers for set1: " + " " + self.draw_entry1.get())
+                f.write("matching numbers for set1: " + " " + self.match_entry1.get())
+                f.write("Your money for set1: " +" " + self.wins_entry1.get())
+                f.close()
 
-            if len(self.empty2) != 0:
 
-                #self.num_entry2.insert(0,self.empty2)
-                self.results_entry2.insert(0,self.compare)
-                self.draw_entry2.insert(0,self.game_numbers)
-                self.num_entry2.config(state='readonly')
-                self.results_entry2.config(state='readonly')
-                self.draw_entry2.config(state='readonly')
+                if len(self.empty2) == 6 and len(self.empty2) !=0:
+                    self.compare.clear()
+                    for i in self.game_numbers:
+                        if i in self.empty2:
+                            self.compare.append(i)
+                    for i in self.dict:
+                        if i == len(self.compare):
+                            self.wins_entry2.insert(0, self.dict[i])
 
-            if len(self.empty3) != 0:
+                    self.results_entry2.insert(0, self.compare)
+                    self.draw_entry2.insert(0, self.game_numbers)
+                    self.match_entry2.insert(0,len(self.compare))
+                    self.num_entry2.config(state='readonly')
+                    self.results_entry2.config(state='readonly')
+                    self.draw_entry2.config(state='readonly')
+                    f = open("details.txt", "a")
+                    f.write(("Numbers you played for set2: " + self.num_entry2.get()))
+                    f.write("Lotto numbers for set2: " + self.draw_entry2.get())
+                    f.write(" Winning numbers for set2: " + " " + self.draw_entry2.get())
+                    f.write("matching numbers for set2: " + " " + self.match_entry2.get())
+                    f.write("Your money for set2: " + " " + self.wins_entry2.get())
+                    f.close()
 
-                #self.num_entry3.insert(0,self.empty3)
-                self.results_entry3.insert(0,self.compare)
-                self.draw_entry3.insert(0,self.game_numbers)
-                self.num_entry3.config(state='readonly')
-                self.results_entry3.config(state='readonly')
-                self.draw_entry3.config(state='readonly')
+
+                    if len(self.empty3) == 6 and len(self.empty3) !=0:
+                        self.compare.clear()
+                        for i in self.game_numbers:
+                            if i in self.empty3:
+                                self.compare.append(i)
+                        for i in self.dict:
+                            if i == len(self.compare):
+                                self.wins_entry3.insert(0, self.dict[i])
+                        self.results_entry3.insert(0, self.compare)
+                        self.draw_entry3.insert(0, self.game_numbers)
+                        self.match_entry3.insert(0,len(self.compare))
+                        self.num_entry3.config(state='readonly')
+                        self.results_entry3.config(state='readonly')
+                        self.draw_entry3.config(state='readonly')
+                        f = open("details.txt", "a")
+                        f.write(("Numbers you played for set3: " + self.num_entry3.get()))
+                        f.write("Lotto numbers for set3: " + self.draw_entry3.get())
+                        f.write(" Winning numbers for set3: " + " " + self.draw_entry3.get())
+                        f.write("matching numbers for set3: " + " " + self.match_entry3.get())
+                        f.write("Your money for set3: " + " " + self.wins_entry3.get())
+                        f.close()
+                    #total = float(self.wins_entry1.get()) + float(self.wins_entry2.get()) + float(self.wins_entry3.get())
+                    #self.total_entry.insert(0,total)
+
+
+
+
         def clear(self):
             self.num_entry1.config(state='normal')
             self.results_entry1.config(state='normal')
@@ -1303,7 +1366,7 @@ class Lotto_machine():
 
 
         def claim(self):
-            if len(self.results_entry1.get()) == 0 and len(self.results_entry2.get()) == 0 and len(self.results_entry3.get()) == 0:
+            if self.wins_entry1.get() == "0" and self.wins_entry2.get() == "0" and self.wins_entry3.get() == "0":
                 messagebox.showwarning(title="Lost!", message="Sorry you have not won, please play again.")
             else:
                 messagebox.showinfo(title="Congragulations", message="Congragulations! You win!")

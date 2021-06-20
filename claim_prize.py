@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import  ttk
 from tkinter import messagebox
+from login import Get
 
 root = Tk()
 root.geometry("800x800")
@@ -39,8 +40,9 @@ class Prize_claim():
         from email.mime.text import MIMEText
         from email.mime.multipart import MIMEMultipart
 
+        x = Get.name1(self)
         sender_email_id = 'stuurmanmzwandile@gmail.com'
-        receiver_email_id = ['sithandathuzipho@gmail.com', self.email_entry.get()]
+        receiver_email_id = ['sithandathuzipho@gmail.com', self.email_entry.insert(0,x)]
         password = input("Enter your password: ")
         subject = "Your winnings."
         msg = MIMEMultipart()
